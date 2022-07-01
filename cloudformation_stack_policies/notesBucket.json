@@ -1,0 +1,54 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAdminsAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::937489132779:role/admins"
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::notes-lnkd-brk",
+        "arn:aws:s3:::notes-lnkd-brk/*"
+      ]
+    },
+    {
+      "Sid": "AllowNotesWriterAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::937489132779:role/notesWriter"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::notes-lnkd-brk",
+        "arn:aws:s3:::notes-lnkd-brk/*"
+      ]
+    },
+    {
+      "Sid": "AllowNotesReaderAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::937489132779:role/notesReader"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:GetObject",
+        "s3:GetObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::notes-lnkd-brk",
+        "arn:aws:s3:::notes-lnkd-brk/*"
+      ]
+    }
+  ]
+}
